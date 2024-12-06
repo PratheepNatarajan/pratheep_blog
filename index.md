@@ -4,11 +4,18 @@ title: Student Home
 description: Home Page
 hide: true
 ---
-![alt text](images/favicon.ico) **My journey starts here**
+### Development Environment
 
+> Coding starts with tools, explore these tools and procedures with a click.
 
-<button>GITHUB</button>  <button>VSCODE</button>
-
-<a href="" style="background-color: #4CAF50; color: white; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; border-radius: 5px;">
- Github
-</a>
+<div style="display: flex; flex-wrap: wrap; gap: 10px;">
+    <a href="https://github.com/PratheepNatarajan/pratheep_blog">
+        <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
+    </a>
+    <a href="https://pratheepnatarajan.github.io/pratheep_blog/">
+        <img src="https://img.shields.io/badge/GitHub%20Pages-327FC7?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Pages">
+    </a>
+    <a href="https://vscode.dev/">
+        <img src="https://img.shields.io/badge/VSCode-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white" alt="VSCode">
+    </a>
+</div>
