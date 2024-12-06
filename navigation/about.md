@@ -9,8 +9,6 @@ Creator of Student 2025
 Places I have been to
 
 
-
-
 <div id="utterances-comments"></div>
 <script async src="https://utteranc.es/client.js"
 repo="PratheepNatarajan/pratheep_blog"
