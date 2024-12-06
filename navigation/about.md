@@ -14,10 +14,10 @@ Hello, My name is Pratheep. I am 14 years old and completely new to coding. My h
 
 ![occupations](<blog picture.png>)
 
-<script src="https://utteranc.es/client.js"
-        repo="pratheep_blog"
-        issue-term="pathname"
-        theme="github-light"
-        crossorigin="anonymous"
-        async>
+<div id="utterances-comments"></div>
+<script async src="https://utteranc.es/client.js"
+repo="PratheepNatarajan/pratheep_blog"
+issue-term="title"
+theme="github-light"
+crossorigin="anonymous">
 </script>
