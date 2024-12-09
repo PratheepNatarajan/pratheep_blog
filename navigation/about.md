@@ -60,9 +60,9 @@ Flags are made using Wikipedia images
     
 var living_in_the_world = [
     {"flag": "4/41/Flag_of_India.svg", "description": "India - Where my parents are from. I enjoyed exploring the different foods they offered in addition to culture. Also met most of my relatives there."},
-    {"flag": "b/b9/Flag_of_Oregon.svg", "description": "San Diego - My birthplace"},
+    {"flag": "b/b9/Flag_of_Oregon.svg", "description": "Oregon"},
     {"flag": "e/ef/Flag_of_Hawaii.svg", "description": "Hawaii - My favorite vacation place"},
-    {"flag": "1/1a/Flag_of_New_York.svg", "description": "New Yprk"},
+    {"flag": "1/1a/Flag_of_New_York.svg", "description": "New York"},
     {"flag": "0/01/Flag_of_California.svg", "greeting": "Hey", "description": "California - forever"}
 ];
  
