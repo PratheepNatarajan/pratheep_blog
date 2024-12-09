@@ -20,4 +20,3 @@ hide: true
     </a>
 </div>
 
-andrew is cool
