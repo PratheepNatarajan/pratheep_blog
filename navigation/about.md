@@ -59,10 +59,10 @@ Flags are made using Wikipedia images
     var http_source = "https://upload.wikimedia.org/wikipedia/commons/";
     
 var living_in_the_world = [
-    {"flag": "4/41/Flag_of_India.svg", "greeting": "Namaste", "description": "India - Where my parents are from. I enjoyed exploring the different foods they offered in addition to culture. Also met most of my relatives there."},
-    {"flag": "1/19/Flag_of_San_Diego%2C_California.svg", "greeting": "Hi", "description": "San Diego - My birthplace"},
-    {"flag": "e/ef/Flag_of_Hawaii.svg", "greeting": "Aloha", "description": "Hawaii - My favorite vacation place"},
-    {"flag": "1/1a/Flag_of_New_York.svg", "greeting": "Hello", "description": "Singapore - A multicultural hub"},
+    {"flag": "4/41/Flag_of_India.svg", "description": "India - Where my parents are from. I enjoyed exploring the different foods they offered in addition to culture. Also met most of my relatives there."},
+    {"flag": "b/b9/Flag_of_Oregon.svg", "description": "San Diego - My birthplace"},
+    {"flag": "e/ef/Flag_of_Hawaii.svg", "description": "Hawaii - My favorite vacation place"},
+    {"flag": "1/1a/Flag_of_New_York.svg", "description": "New Yprk"},
     {"flag": "0/01/Flag_of_California.svg", "greeting": "Hey", "description": "California - forever"}
 ];
  
@@ -106,3 +106,13 @@ theme="github-light"
 crossorigin="anonymous">
 
 </script>
+
+## Hobbies that are important to me
+- Reading
+- Spending Time With Family
+- Playing Video games
+- Hanging out with friends
+- Practicing Badminton 
+
+## Books that I have read
+
