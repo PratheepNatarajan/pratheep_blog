@@ -98,15 +98,6 @@ var living_in_the_world = [
     }
 </script>
 
-<div id="utterances-comments"></div>
-<script async src="https://utteranc.es/client.js"
-repo="PratheepNatarajan/pratheep_blog"
-issue-term="title"
-theme="github-light"
-crossorigin="anonymous">
-
-</script>
-
 ## Hobbies that are important to me
 - Reading
 - Spending Time With Family
@@ -116,3 +107,11 @@ crossorigin="anonymous">
 
 ## Books that I have read
 
+<div id="utterances-comments"></div>
+<script async src="https://utteranc.es/client.js"
+repo="PratheepNatarajan/pratheep_blog"
+issue-term="title"
+theme="github-light"
+crossorigin="anonymous">
+
+</script>
