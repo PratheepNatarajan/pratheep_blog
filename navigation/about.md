@@ -107,6 +107,14 @@ var living_in_the_world = [
 
 ## Books that I have read
 
+<div class="image-gallery">
+  <img src="{{site.baseurl}}" alt="">
+  <img src="{{site.baseurl}}" alt="">
+  <img src="{{site.baseurl}}" alt="">
+  <img src="{{site.baseurl}}" alt="">
+  <img src="{{site.baseurl}}/images/about/mazerunner.jpg" alt="Maze Runner Book">
+</div> 
+
 <div id="utterances-comments"></div>
 <script async src="https://utteranc.es/client.js"
 repo="PratheepNatarajan/pratheep_blog"

@@ -20,3 +20,8 @@ hide: true
     </a>
 </div>
 
+# My Jupyter Notebooks
+
+## Section 1
+[Tools Verify](toolsverify/_notebooks/Foundation/B-tools_and_equipment/2023-08-22-devops_tools-verify.ipynb)
+
