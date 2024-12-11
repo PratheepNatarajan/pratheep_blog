@@ -23,5 +23,7 @@ hide: true
 ## My Jupyter Notebooks
 
 ### Tools Verification
-[Tools Verify](toolsverify/_notebooks/Foundation/B-tools_and_equipment/2023-08-22-devops_tools-verify.ipynb)
+<div style="display: flex; flex-wrap: wrap; gap: 10px;">
+    <a href="https://pratheepnatarajan.github.io/pratheep_blog">
+        <img src="https://img.shields.io/badge/Tools%20Verify-FF0000?style=for-the-badge" alt="Tools Verification">
 
