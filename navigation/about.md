@@ -108,11 +108,11 @@ var living_in_the_world = [
 ## Books that I have read
 
 <div class="image-gallery">
-  <img src="{{site.baseurl}}" alt="">
-  <img src="{{site.baseurl}}" alt="">
-  <img src="{{site.baseurl}}" alt="">
-  <img src="{{site.baseurl}}" alt="">
-  <img src="{{site.baseurl}}/images/about/mazerunner.jpg" alt="Maze Runner Book">
+  <img src="{{site.baseurl}}/images/about/thegiver.jpg" alt="The Giver">
+  <img src="{{site.baseurl}}/images/about/farenhright451.png" alt="Farenheight 451">
+  <img src="{{site.baseurl}}/images/about/harrypotter1.jpg" alt="Harry Potter - Order of the Stone">
+  <img src="{{site.baseurl}}/images/about/sorcerersstone.jpg" alt="Harry Potter - Sorcerer's Stone">
+  <img src="{{site.baseurl}}/images/about/mazerunner.jpg" alt="Maze Runner">
 </div> 
 
 <div id="utterances-comments"></div>
