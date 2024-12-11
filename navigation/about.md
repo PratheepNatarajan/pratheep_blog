@@ -60,10 +60,10 @@ Flags are made using Wikipedia images
     
 var living_in_the_world = [
     {"flag": "4/41/Flag_of_India.svg", "description": "India - Where my parents are from. I enjoyed exploring the different foods they offered in addition to culture. Also met most of my relatives there."},
-    {"flag": "b/b9/Flag_of_Oregon.svg", "description": "Oregon"},
-    {"flag": "e/ef/Flag_of_Hawaii.svg", "description": "Hawaii - My favorite vacation place"},
-    {"flag": "1/1a/Flag_of_New_York.svg", "description": "New York"},
-    {"flag": "0/01/Flag_of_California.svg", "greeting": "Hey", "description": "California - forever"}
+    {"flag": "f/f3/Flag_of_Switzerland.svg", "description": "Switzerland - I liked the view of the area. The mountainous peakes and medival look made the place lively. "},
+    {"flag": "e/ef/Flag_of_Hawaii.svg", "description": "Hawaii - My favorite vacation place, I loved the different hikes and view of the mountains, and my favorite island has to be Mowi."},
+    {"flag": "1/1a/Flag_of_New_York.svg", "description": "New York - Enjoyed the views from the Empire State Building and the Statue of Liberty. The food there was incredible such as the pizza and pasta"},
+    {"flag": "0/01/Flag_of_California.svg", "description": "California - Ive lived here my entire life, there isn't much to say about it."}
 ];
  
     
