@@ -24,13 +24,13 @@ hide: true
 ### Tool Installation Process
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">                                                              
     <a href="https://nighthawkcoders.github.io/portfolio_2025/devops/tools/setup">
-        <img src="https://img.shields.io/badge/Tools%20Setup-FF0000?style=for-the-badge" alt="Tools Setup">    
+        <img src="https://img.shields.io/badge/%20Setup-FF0000?style=for-the-badge" alt="Tools Setup">    
     </a>
-    <a href="https://nighthawkcoders.github.io/portfolio_2025/devops/tools/verify">
-        <img src="https://img.shields.io/badge/Tools%20Verify-FF0000?style=for-the-badge" alt="Tools Verify">
+    <a href="https://pratheepnatarajan.github.io/pratheep_blog/devops/tools/verify">
+        <img src="https://img.shields.io/badge/%20Verify-FF0000?style=for-the-badge" alt="Tools Verify">
     </a>
     <a href="https://nighthawkcoders.github.io/portfolio_2025/devops/github/pages/play">
-        <img src="https://img.shields.io/badge/Tools%20Play-FF0000?style=for-the-badge" alt="Tools Play">
+        <img src="https://img.shields.io/badge/%20Play-FF0000?style=for-the-badge" alt="Tools Play">
     </a>
     <a href="https://nighthawkcoders.github.io/portfolio_2025/devops/hacks">
         <img src="https://img.shields.io/badge/%20Hacks-FF0000?style=for-the-badge" alt="Hacks">
