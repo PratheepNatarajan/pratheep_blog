@@ -21,7 +21,7 @@ hide: true
 </div>
 
 
-### Tool Installation Process
+### Tool Installation 
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">                                                              
     <a href="https://nighthawkcoders.github.io/portfolio_2025/devops/tools/setup">
         <img src="https://img.shields.io/badge/%20Setup-FF0000?style=for-the-badge" alt="Tools Setup">    
