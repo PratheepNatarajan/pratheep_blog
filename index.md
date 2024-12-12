@@ -36,3 +36,11 @@ hide: true
         <img src="https://img.shields.io/badge/%20Hacks-FF0000?style=for-the-badge" alt="Hacks">
     </a>
 </div>
+
+### Game Coding Process
+> Here is my progress through game coding, click to see these online
+
+<div style="display: flex; flex-wrap: wrap; gap: 10px;">
+    <a href="https://pratheepnatarajan.github.io/pratheep_blog/snake/">
+        <img src="https://img.shields.io/badge/%20Snake-00FF00?style=for-the-badge"
+    
