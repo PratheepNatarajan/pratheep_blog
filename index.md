@@ -21,7 +21,7 @@ hide: true
 </div>
 
 
-### Verification of Tools
+### Jupyter Notebooks
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">                                                              
     <a href="https://pratheepnatarajan.github.io/pratheep_blog/devops/tools/verify">
         <img src="https://img.shields.io/badge/%20Verify-FF0000?style=for-the-badge" alt="Tools Verify">
@@ -32,6 +32,13 @@ hide: true
 > Here is my progress through game coding, click to see these online
 
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-    <a href="https://pratheepnatarajan.github.io/pratheep_blog/snake/">
-        <img src="https://img.shields.io/badge/%20Snake-00FF00?style=for-the-badge">
+    <a href="https://pratheepnatarajan.github.io/pratheep_blog/snake/" style="text-decoration: none;">
+        <div style="background-color:rgb(135, 199, 18); color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+            Snake Game
+        </div>
+    </a>
+    <a href="https://pratheepnatarajan.github.io/pratheep_blog/cookie/" style="text-decoration: none;">
+        <div style="background-color:rgb(135, 199, 18); color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+            Cookie Clicker
+    
     
