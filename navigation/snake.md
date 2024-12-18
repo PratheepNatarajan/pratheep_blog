@@ -268,14 +268,24 @@ permalink: /snake/
             }
             // Repaint canvas
             ctx.beginPath();
-            ctx.fillStyle = "#1c6b2e ";
+            ctx.fillStyle = "#a8ffa3"
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             // Paint snake
-            for(let i = 0; i < snake.length; i++){
-                activeDot(snake[i].x, snake[i].y);
+        // Paint snake
+        // Paint snake
+        for (let i = 0; i < snake.length; i++) {
+            const part = snake[i];
+            if (i === 0) {
+                // Draw the snake head with rotation
+                drawSnakePart(part.x, part.y, snake_dir); // Snake head
+            } else {
+                // Draw the snake body as a solid block
+                ctx.fillStyle = "#24ed4f"; // Snake body color
+                ctx.fillRect(part.x * BLOCK, part.y * BLOCK, BLOCK, BLOCK);
             }
+        }
             // Paint food
-            activeDot(food.x, food.y);
+            activeFood(food.x, food.y);
             // Debug
             //document.getElementById("debug").innerHTML = snake_dir + " " + snake_next_dir + " " + snake[0].x + " " + snake[0].y;
             // Recursive call after speed delay, déjà vu
@@ -325,12 +335,58 @@ permalink: /snake/
                     break;
             }
         }
+
+        // Snake sprite image
+        const snakeSprite = new Image();
+        snakeSprite.src = '../images/about/snake_png.png'; // Path to your snake sprite image
+
+        let drawSnakePart = function(x, y, direction) {
+            const size = BLOCK; // The size of each snake part
+            ctx.save(); // Save the current canvas state
+
+            // Translate to the snake part's position
+            ctx.translate(x * size + size / 2, y * size + size / 2);
+
+            // Rotate the canvas based on snake direction
+            switch (direction) {
+                case 0: ctx.rotate(-Math.PI / 2); break; // Up
+                case 1: ctx.rotate(0); break;            // Right
+                case 2: ctx.rotate(Math.PI / 2); break;  // Down
+                case 3: ctx.rotate(Math.PI); break;      // Left
+            }
+
+            // Draw the sprite centered at the translated position
+            ctx.drawImage(snakeSprite, -size / 2, -size / 2, size, size);
+
+            ctx.restore(); // Restore the canvas to its previous state
+        };
+
+
+
         /* Dot for Food or Snake part */
         /////////////////////////////////////////////////////////////
         let activeDot = function(x, y){
-            ctx.fillStyle = "#000000"
+            ctx.fillStyle = "#24ed4f"
             ctx.fillRect(x * BLOCK, y * BLOCK, BLOCK, BLOCK);
         }
+
+
+        // Load the image
+        const foodImg = new Image();
+        foodImg.src = '../images/about/transparentminecraftapple.png';
+        // Desired width and height for the food image 
+        let foodWidth = BLOCK * 1.2; // Example: double the block size 
+        let foodHeight = BLOCK * 1.2; // Example: double the block size
+        let activeFood = function(x, y){
+           // ctx.fillStyle = "#FF0000"
+            //ctx.fillRect(x * BLOCK, y * BLOCK, BLOCK, BLOCK);
+            if (foodImg.complete && foodImg.naturalHeight !== 0) { 
+                ctx.drawImage(foodImg, x * BLOCK, y * BLOCK, foodWidth, foodHeight); 
+                }
+        }
+        
+
+
         /* Random food placement */
         /////////////////////////////////////////////////////////////
         let addFood = function(){
@@ -364,7 +420,7 @@ permalink: /snake/
         let setWall = function(wall_value){
             wall = wall_value;
             if(wall === 0){screen_snake.style.borderColor = "#606060";}
-            if(wall === 1){screen_snake.style.borderColor = "#000000";}
+            if(wall === 1){screen_snake.style.borderColor = "#24ed4f";}
         }
     })();
 </script>
