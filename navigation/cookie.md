@@ -1,6 +1,6 @@
 ---
 layout: base
-title: Cookie Clicker
+title: Cookie
 permalink: /cookie/
 ---
 
@@ -40,13 +40,16 @@ permalink: /cookie/
     <h1>Cookie Clicker</h1>
     <img id="cookie" src="../images/about/cookie.png" alt="Cookie">
     <div id="score">0</div>
-    <button id="autoClicker" class="button" disabled>Buy Auto Clicker (10 cookies)</button>
-    <button id="doubleCookies" class="button" disabled>Buy Double Cookies (50 cookies)</button>
+    <button id="autoClicker" class="button" disabled>Buy Worker (10 cookies)</button>
+    <button id="doubleCookies" class="button" disabled>Upgrade (50 cookies)</button>
+    <div id="workerCounter">Workers: 0</div> <!-- Worker Counter -->
     <script>
         let score = 0;
         let cookiesPerClick = 1;
         let autoClickerCost = 10;
         let doubleCookiesCost = 50;
+        let workerCount = 0; // Initialize worker count
+        let workerCost = 10;
 
         const cookie = document.getElementById('cookie');
         const scoreDisplay = document.getElementById('score');
@@ -56,8 +59,9 @@ permalink: /cookie/
         // Update score display
         function updateScoreDisplay() {
             scoreDisplay.textContent = score;
-            autoClickerButton.disabled = score < autoClickerCost;
+            autoClickerButton.disabled = score < workerCost;
             doubleCookiesButton.disabled = score < doubleCookiesCost;
+            document.getElementById('workerCounter').textContent = `Workers: ${workerCount}`;
         }
 
         // Click the cookie
@@ -66,14 +70,16 @@ permalink: /cookie/
             updateScoreDisplay();
         });
 
-        // Buy Auto Clicker
+        // Buy Worker
         autoClickerButton.addEventListener('click', () => {
-            if (score >= autoClickerCost) {
-                score -= autoClickerCost;
-                autoClickerCost *= 2;
-                autoClickerButton.textContent = `Buy Auto Clicker (${autoClickerCost} cookies)`;
+            if (score >= workerCost) {
+                score -= workerCost;
+                workerCount += 1;
+                workerCost *= 2; // Double the cost for the next worker
+                autoClickerButton.textContent = `Buy Worker (${workerCost} cookies)`;
                 updateScoreDisplay();
 
+                // Automatically add cookies per second for each worker
                 setInterval(() => {
                     score += cookiesPerClick;
                     updateScoreDisplay();
@@ -81,13 +87,13 @@ permalink: /cookie/
             }
         });
 
-        // Buy Double Cookies
+        // Upgrade Button
         doubleCookiesButton.addEventListener('click', () => {
             if (score >= doubleCookiesCost) {
                 score -= doubleCookiesCost;
                 cookiesPerClick *= 2;
                 doubleCookiesCost *= 2;
-                doubleCookiesButton.textContent = `Buy Double Cookies (${doubleCookiesCost} cookies)`;
+                doubleCookiesButton.textContent = `Upgrade (${doubleCookiesCost} cookies)`;
                 updateScoreDisplay();
             }
         });
@@ -97,3 +103,4 @@ permalink: /cookie/
     </script>
 </body>
 </html>
+

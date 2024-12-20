@@ -270,20 +270,23 @@ permalink: /snake/
             ctx.beginPath();
             ctx.fillStyle = "#a8ffa3"
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-            // Paint snake
-        // Paint snake
         // Paint snake
         for (let i = 0; i < snake.length; i++) {
             const part = snake[i];
             if (i === 0) {
-                // Draw the snake head with rotation
-                drawSnakePart(part.x, part.y, snake_dir); // Snake head
+                // Draw the snake head with rotation (already implemented)
+                drawSnakePart(part.x, part.y, snake_dir); 
             } else {
-                // Draw the snake body as a solid block
-                ctx.fillStyle = "#24ed4f"; // Snake body color
+                // Alternate the snake body colors between lime and dark green
+                if (i % 2 === 0) {
+                    ctx.fillStyle = "#24ed4f"; 
+                } else {
+                    ctx.fillStyle = "#2bff00"; 
+                }
                 ctx.fillRect(part.x * BLOCK, part.y * BLOCK, BLOCK, BLOCK);
             }
         }
+
             // Paint food
             activeFood(food.x, food.y);
             // Debug
@@ -336,6 +339,7 @@ permalink: /snake/
             }
         }
 
+
         // Snake sprite image
         const snakeSprite = new Image();
         snakeSprite.src = '../images/about/snake_png.png'; // Path to your snake sprite image
@@ -370,10 +374,18 @@ permalink: /snake/
             ctx.fillRect(x * BLOCK, y * BLOCK, BLOCK, BLOCK);
         }
 
+        // Food image array and index
+        const foodImages = [
+            '../images/about/apple.png',
+            '../images/about/orange.png',
+            '../images/about/mango.png',
+        ]; 
+        let currentFoodIndex = 0;
 
-        // Load the image
+        // Initialize the first food image
         const foodImg = new Image();
-        foodImg.src = '../images/about/transparentminecraftapple.png';
+        foodImg.src = foodImages[currentFoodIndex];
+
         // Desired width and height for the food image 
         let foodWidth = BLOCK * 1.2; // Example: double the block size 
         let foodHeight = BLOCK * 1.2; // Example: double the block size
@@ -389,38 +401,43 @@ permalink: /snake/
 
         /* Random food placement */
         /////////////////////////////////////////////////////////////
-        let addFood = function(){
+        let addFood = function() {
             food.x = Math.floor(Math.random() * ((canvas.width / BLOCK) - 1));
             food.y = Math.floor(Math.random() * ((canvas.height / BLOCK) - 1));
-            for(let i = 0; i < snake.length; i++){
-                if(checkBlock(food.x, food.y, snake[i].x, snake[i].y)){
-                    addFood();
+
+            // Check if the food overlaps the snake's body
+            for (let i = 0; i < snake.length; i++) {
+                if (checkBlock(food.x, food.y, snake[i].x, snake[i].y)) {
+                    addFood(); // Recursively call to find a new position
+                    return;
                 }
             }
-        }
-        /* Collision Detection */
-        /////////////////////////////////////////////////////////////
-        let checkBlock = function(x, y, _x, _y){
+
+            // Cycle to the next food image
+            currentFoodIndex = (currentFoodIndex + 1) % foodImages.length;
+            foodImg.src = foodImages[currentFoodIndex];
+}
+        // Collision Detection
+        let checkBlock = function(x, y, _x, _y) {
             return (x === _x && y === _y);
-        }
-        /* Update Score */
-        /////////////////////////////////////////////////////////////
-        let altScore = function(score_val){
+        };
+
+        // Update Score
+        let altScore = function(score_val) {
             ele_score.innerHTML = String(score_val);
-        }
-        /////////////////////////////////////////////////////////////
-        // Change the snake speed...
-        // 150 = slow
-        // 100 = normal
-        // 50 = fast
-        let setSnakeSpeed = function(speed_value){
+        };
+
+        // Change the snake speed
+        let setSnakeSpeed = function(speed_value) {
             snake_speed = speed_value;
-        }
-        /////////////////////////////////////////////////////////////
-        let setWall = function(wall_value){
+        };
+
+        // Set Wall
+        let setWall = function(wall_value) {
             wall = wall_value;
-            if(wall === 0){screen_snake.style.borderColor = "#606060";}
-            if(wall === 1){screen_snake.style.borderColor = "#24ed4f";}
-        }
+            if (wall === 0) { screen_snake.style.borderColor = "#606060"; }
+            if (wall === 1) { screen_snake.style.borderColor = "#24ed4f"; }
+        };
+
     })();
 </script>
