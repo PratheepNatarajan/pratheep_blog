@@ -41,4 +41,7 @@ hide: true
         <div style="background-color:rgb(135, 199, 18); color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
             Cookie Clicker
     
+### Hacks for Lessons
+
+
     
