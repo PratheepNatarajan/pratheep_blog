@@ -76,26 +76,6 @@ class GameLevelishan {
         }
       };
 
-    // NPC data for Questgiver
-    const sprite_src_questgiver = path + "/images/gamify/questgiver.png"; // Make sure to use the correct path
-    const sprite_data_questgiver = {
-        id: 'Questgiver',
-        greeting: "Hello! I'm the Questgiver! Are you ready for a task?",
-        src: sprite_src_questgiver,
-        SCALE_FACTOR: 6,  // Adjust as needed for scaling
-        ANIMATION_RATE: 50,
-        pixels: {height: 256, width: 352},
-        INIT_POSITION: { x: (width / 3), y: (height / 3)}, // Adjust this based on where you want it
-        orientation: {rows: 4, columns: 4 },
-        down: {row: 0, start: 0, columns: 3 },  // Stationary NPC by default
-        hitbox: { widthPercentage: 0.1, heightPercentage: 0.2 },
-        quest: {
-            title: "New Adventure",
-            description: "Help me find the lost treasure in the desert!",
-            reward: "30 gold"
-        }
-      };
-
       // NPC data for Octocat
       const sprite_src_octocat = path + "/images/gamify/octocat.png"; // be sure to include the path
       const sprite_data_octocat = {
@@ -134,7 +114,6 @@ class GameLevelishan {
       { class: Player, data: sprite_data_chillguy },
       { class: Npc, data: sprite_data_tux },
       { class: Npc, data: sprite_data_octocat },
-      { class: Npc, data: sprite_data_questgiver}
     ];
   }
 
