@@ -46,26 +46,6 @@ class GameLevelDesert {
         hitbox: { widthPercentage: 0.45, heightPercentage: 0.2 },
         keypress: { up: 87, left: 65, down: 83, right: 68 } // W, A, S, D
     };
-
-    // NPC data for Questgiver
-    const sprite_src_questgiver = path + "/images/gamify/npc1.png"; // Make sure to use the correct path
-    const sprite_data_questgiver = {
-        id: 'Questgiver',
-        greeting: "Hello! I'm the Questgiver! Are you ready for a task?",
-        src: sprite_src_questgiver,
-        SCALE_FACTOR: 6,  // Adjust as needed for scaling
-        ANIMATION_RATE: 50,
-        pixels: {height: 256, width: 352},
-        INIT_POSITION: { x: (width / 3), y: (height / 3)}, // Adjust this based on where you want it
-        orientation: {rows: 4, columns: 4 },
-        down: {row: 0, start: 0, columns: 3 },  // Stationary NPC by default
-        hitbox: { widthPercentage: 0.1, heightPercentage: 0.2 },
-        quest: {
-            title: "New Adventure",
-            description: "Help me find the lost treasure in the desert!",
-            reward: "30 gold"
-        }
-      };
     
     // Player data for item
     const sprite_src_item = path + "/images/gamify/item.png"; // be sure to include the path
