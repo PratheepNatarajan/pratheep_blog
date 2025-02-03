@@ -46,7 +46,7 @@ class GameLevelDesert {
         hitbox: { widthPercentage: 0.45, heightPercentage: 0.2 },
         keypress: { up: 87, left: 65, down: 83, right: 68 } // W, A, S, D
     };
-    
+
     // Player data for item
     const sprite_src_item = path + "/images/gamify/item.png"; // be sure to include the path
     const ITEM_SCALE_FACTOR = 5;
@@ -95,7 +95,6 @@ class GameLevelDesert {
       { class: Background, data: image_data_desert },
       { class: Player, data: sprite_data_chillguy },
       { class: Item, data: sprite_data_item},
-      { class: Npc, data: sprite_data_questgiver}
     ];
   }
 
