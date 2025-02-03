@@ -48,7 +48,7 @@ class GameLevelDesert {
     };
 
     // NPC data for Questgiver
-    const sprite_src_questgiver = path + "/images/gamify/questgiver.png"; // Make sure to use the correct path
+    const sprite_src_questgiver = path + "/images/gamify/npc1.png"; // Make sure to use the correct path
     const sprite_data_questgiver = {
         id: 'Questgiver',
         greeting: "Hello! I'm the Questgiver! Are you ready for a task?",
