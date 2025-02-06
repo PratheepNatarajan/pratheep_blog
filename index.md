@@ -41,4 +41,15 @@ hide: true
         <div style="background-color:rgb(135, 199, 18); color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
             Cookie Clicker
 
+
+[Variables Popcorn Hacks](https://pratheepnatarajan.github.io/pratheep_blog/csse/lessons/variables/popcornhacks)[Variables Homework](https://pratheepnatarajan.github.io/pratheep_blog/csse/lessons/variables/homework)
+[Nested Conditionals Popcorn Hacks](https://pratheepnatarajan.github.io/pratheep_blog/csse/lessons/nestedconditionals/popcornhacks) [Nested Conditionals Homework](https://pratheepnatarajan.github.io/pratheep_blog/csse/lessons/nestedconditionals/homework)
+[Arrays Popcorn Hacks](https://pratheepnatarajan.github.io/pratheep_blog/csse/lessons/arrays/popcornhacks)[Arrays Homework](https://pratheepnatarajan.github.io/csse/lessons/arrays/homework)
+[Classes and Methods Popcorn Hacks](https://pratheepnatarajan.github.io/pratheep_blog/csse/lessons/classesandmethods/popcornhacks)[Classes and Methods Homework](https://pratheepnatarajan.github.io/pratheep_blog/csse/lessons/classesandmethods/homework)
+[Conditions Popcorn Hacks](https://pratheepnatarajan.github.io/pratheep_blog/csse/lessons/conditions/popcornhacks)[Conditions Homework](https://pratheepnatarajan.github.io/pratheep_blog/csse/lessons/conditions/homework/)
+[Booleans Popcorn Hacks](https://pratheepnatarajan.github.io/pratheep_blog/csse/lessons/booleans/popcornhacks)[Booleans Homework](https://pratheepnatarajan.github.io/pratheep_blog/pair/habits)
+
+
+
+
     

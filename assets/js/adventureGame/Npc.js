@@ -1,6 +1,30 @@
 import GameEnv from "./GameEnv.js";
 import Character from "./Character.js";
 import Prompt from "./Prompt.js";
+
+    class Quest {
+        constructor(title, description, itemsRequired) {
+            this.title = title;
+            this.description = description;
+            this.itemsRequired = itemsRequired; // An array of items the player needs to collect
+            this.itemsCollected = 0; // Track how many items the player has collected
+        }
+
+        updateProgress() {
+            return `Progress: ${this.itemsCollected} / ${this.itemsRequired.length}`;
+        }
+
+        collectItem() {
+            if (this.itemsCollected < this.itemsRequired.length) {
+                this.itemsCollected++;
+            }
+        }
+
+        isComplete() {
+            return this.itemsCollected === this.itemsRequired.length;
+        }
+    }
+
 class Npc extends Character {
     constructor(data = null) {
         super(data);

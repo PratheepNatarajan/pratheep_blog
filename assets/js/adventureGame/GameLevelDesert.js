@@ -1,5 +1,3 @@
-// To build GameLevels, each contains GameObjects from below imports
-import GameEnv from './GameEnv.js';
 import Background from './Background.js';
 import GameObject from './GameObject.js';
 import Player from './Player.js';
@@ -11,14 +9,18 @@ class GameLevelDesert {
   constructor(path) {
     const header = document.querySelector('header');
     const footer = document.querySelector('footer');
-    let width = GameEnv.innerWidth;
-    let height = GameEnv.innerHeight;
+
+    let width = window.innerWidth; // Use `window.innerWidth` instead of `GameEnv.innerWidth`
+    let height = window.innerHeight; // Use `window.innerHeight` instead of `GameEnv.innerHeight`
+
+    // Add dialogue box to the DOM
+    this.createDialogueBox();
 
     // Background data
     const image_src_desert = path + "/images/gamify/desert.png"; 
     const image_data_desert = {
       name: 'desert',
-      greeting: "Welcome to the desert!  It is hot and dry here, but there are many adventures to be had!",
+      greeting: "Welcome to the desert! It is hot and dry here, but there are many adventures to be had!",
       src: image_src_desert,
       pixels: { height: 580, width: 1038 }
     };
@@ -28,7 +30,7 @@ class GameLevelDesert {
     const CHILLGUY_SCALE_FACTOR = 5;
     const sprite_data_chillguy = {
       id: 'Chill Guy',
-      greeting: "Hi I am Chill Guy, the desert wanderer. I am looking for wisdom and adventure!",
+      greeting: "Hi, I am Chill Guy, the desert wanderer. I am looking for wisdom and adventure!",
       src: sprite_src_chillguy,
       SCALE_FACTOR: CHILLGUY_SCALE_FACTOR,
       STEP_FACTOR: 1000,
@@ -45,7 +47,7 @@ class GameLevelDesert {
     };
 
     // NPC data for Questgiver
-    const sprite_src_questgiver = path + "/images/gamify/npc1.png";
+    const sprite_src_questgiver = path + "/images/gamify/questgiver.png";
     const sprite_data_questgiver = {
       id: 'Questgiver',
       greeting: "Hello! I'm the Questgiver! Are you ready for a task?",
@@ -64,86 +66,89 @@ class GameLevelDesert {
       }
     };
 
-    // Player data for item
-    const sprite_src_item = path + "/images/gamify/item.png";
-    const ITEM_SCALE_FACTOR = 5;
-    const sprite_data_item = {
-      id: 'Item',
-      greeting: "Hi I am Chill Guy, the desert wanderer. I am looking for wisdom and adventure!",
-      src: sprite_src_item,
-      SCALE_FACTOR: ITEM_SCALE_FACTOR,
-      STEP_FACTOR: 1000,
-      ANIMATION_RATE: 50,
-      INIT_POSITION: { x: 200, y: height - (height / ITEM_SCALE_FACTOR) },
-      pixels: { height: 160, width: 160 },
-      orientation: { rows: 1, columns: 1 },
-      down: { row: 0, start: 0, columns: 1 },
-      left: { row: 1, start: 0, columns: 1 },
-      right: { row: 1, start: 0, columns: 1 },
-      up: { row: 1, start: 0, columns: 1 },
-      hitbox: { widthPercentage: 0.45, heightPercentage: 0.2 }
-    };
+    // Initialize the Player and NPC
+    this.player = new Player(sprite_data_chillguy);
+    this.questgiver = new Npc(sprite_data_questgiver);
 
-    // List of objects definitions for this level
+    // Initialize objects array without sprite_data_item
     this.objects = [
       { class: Background, data: image_data_desert },
       { class: Player, data: sprite_data_chillguy },
-      { class: Item, data: sprite_data_item },
       { class: Npc, data: sprite_data_questgiver }
     ];
 
-    // Initialize the Player and Npc objects
-    this.player = new Player(sprite_data_chillguy);
-    this.questgiver = new Npc(sprite_data_questgiver);
+    // Debugging to check objects initialization
+    console.log("GameLevelDesert objects:", this.objects);
 
     // Add event listener for quest interaction
     this.addInteractionListener();
   }
 
-  // Method to check if the player can interact with the NPC
+  // Create a dialogue box
+  createDialogueBox() {
+    const dialogueBox = document.createElement('div');
+    dialogueBox.id = 'dialogue-box';
+    dialogueBox.style.position = 'absolute';
+    dialogueBox.style.bottom = '20px';
+    dialogueBox.style.left = '20px';
+    dialogueBox.style.width = '300px';
+    dialogueBox.style.padding = '10px';
+    dialogueBox.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+    dialogueBox.style.color = 'white';
+    dialogueBox.style.borderRadius = '10px';
+    dialogueBox.style.display = 'none'; // Initially hidden
+    dialogueBox.style.zIndex = '1000';
+    document.body.appendChild(dialogueBox);
+  }
+
+  // Show the dialogue box with specific content
+  showDialogue(content) {
+    const dialogueBox = document.getElementById('dialogue-box');
+    dialogueBox.innerHTML = content;
+    dialogueBox.style.display = 'block';
+  }
+
+  // Hide the dialogue box
+  hideDialogue() {
+    const dialogueBox = document.getElementById('dialogue-box');
+    dialogueBox.style.display = 'none';
+  }
+
+  // Add interaction listener
   addInteractionListener() {
     document.addEventListener('keydown', (event) => {
       if (event.key === 'e') {  // 'E' key to interact with NPC
-        this.questgiver.interact(this.player.position);
+        const distance = this.calculateDistance(
+          this.player.position,
+          this.questgiver.data.INIT_POSITION
+        );
+
+        if (distance < 100) { // Example interaction range
+          const quest = this.questgiver.data.quest;
+          const questContent = `
+            <h3>${quest.title}</h3>
+            <p>${quest.description}</p>
+            <p><strong>Reward:</strong> ${quest.reward}</p>
+          `;
+          this.showDialogue(questContent);
+        }
+      } else if (event.key === 'q') { // 'Q' key to close the dialogue
+        this.hideDialogue();
       }
     });
   }
 
-  // You can add any other game update logic here, like movement, etc.
+  // Helper function to calculate distance between two positions
+  calculateDistance(pos1, pos2) {
+    const dx = pos1.x - pos2.x;
+    const dy = pos1.y - pos2.y;
+    return Math.sqrt(dx * dx + dy * dy);
+  }
+
   update() {
     // Your game update loop code here.
   }
 }
 
-class Npc {
-  constructor(data) {
-    this.data = data;
-    this.position = this.data.INIT_POSITION;
-    this.quest = this.data.quest;
-    this.hitbox = this.data.hitbox;
-  }
-
-  // Method to check if the player is close enough to the NPC
-  isPlayerNearby(playerPosition) {
-    const playerX = playerPosition.x;
-    const playerY = playerPosition.y;
-
-    const npcX = this.position.x;
-    const npcY = this.position.y;
-
-    // Check if the player is within a certain range of the NPC (e.g., 50 pixels)
-    return Math.abs(playerX - npcX) < 50 && Math.abs(playerY - npcY) < 50;
-  }
-
-  // Method to display the quest when the player interacts
-  interact(playerPosition) {
-    if (this.isPlayerNearby(playerPosition)) {
-      console.log("Quest: " + this.quest.title);
-      console.log("Description: " + this.quest.description);
-      console.log("Reward: " + this.quest.reward);
-      // Optionally, you could trigger a UI update to show this info on the screen.
-    }
-  }
-}
-
 export default GameLevelDesert;
+
