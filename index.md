@@ -20,28 +20,6 @@ hide: true
     </a>
 </div>
 
-
-### Jupyter Notebooks
-<div style="display: flex; flex-wrap: wrap; gap: 10px;">                                                              
-    <a href="https://pratheepnatarajan.github.io/pratheep_blog/devops/tools/verify">
-        <img src="https://img.shields.io/badge/%20Verify-FF0000?style=for-the-badge" alt="Tools Verify">
-    </a>
-</div>
-
-### Game Coding Process
-> Here is my progress through game coding, click to see these online
-
-<div style="display: flex; flex-wrap: wrap; gap: 10px;">
-    <a href="https://pratheepnatarajan.github.io/pratheep_blog/snake/" style="text-decoration: none;">
-        <div style="background-color:rgb(135, 199, 18); color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
-            Snake Game
-        </div>
-    </a>
-    <a href="https://pratheepnatarajan.github.io/pratheep_blog/cookie/" style="text-decoration: none;">
-        <div style="background-color:rgb(135, 199, 18); color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
-            Cookie Clicker
-
-
 [Variables Popcorn Hacks](https://pratheepnatarajan.github.io/pratheep_blog/csse/lessons/variables/popcornhacks)[Variables Homework](https://pratheepnatarajan.github.io/pratheep_blog/csse/lessons/variables/homework)
 [Nested Conditionals Popcorn Hacks](https://pratheepnatarajan.github.io/pratheep_blog/csse/lessons/nestedconditionals/popcornhacks) [Nested Conditionals Homework](https://pratheepnatarajan.github.io/pratheep_blog/csse/lessons/nestedconditionals/homework)
 [Arrays Popcorn Hacks](https://pratheepnatarajan.github.io/pratheep_blog/csse/lessons/arrays/popcornhacks)[Arrays Homework](https://pratheepnatarajan.github.io/csse/lessons/arrays/homework)
