@@ -1,11 +1,16 @@
+// To build GameLevels, each contains GameObjects from below imports
 import GameEnv from './GameEnv.js';
+import Background from './Background.js';
 import GameObject from './GameObject.js';
+import Player from './Player.js';
+import Character from './Character.js';
 
 // Define non-mutable constants as defaults
 const SCALE_FACTOR = 25; // 1/nth of the height of the canvas
 const STEP_FACTOR = 100; // 1/nth, or N steps up and across the canvas
 const ANIMATION_RATE = 1; // 1/nth of the frame rate
 const INIT_POSITION = { x: 0, y: 0 };
+
 
 /**
  * Item is a dynamic class that manages the data and events for objects like player and NPCs.
@@ -37,7 +42,13 @@ const INIT_POSITION = { x: 0, y: 0 };
  * @method resize - Resizes the object based on the game environment.
  * @method destroy - Removes the object from the game environment.    
  */
+
+let levelData; 
+
+
+
 class Item extends GameObject {
+    
     /**
      * The constructor method is called when a new Player object is created.
      * 
@@ -45,6 +56,7 @@ class Item extends GameObject {
      */
     constructor(data = null) {
         super();
+
         this.state = {
             ...this.state,
             animation: 'idle',
@@ -93,11 +105,16 @@ class Item extends GameObject {
         // Initialize the object's position and velocity
         this.velocity = { x: 0, y: 0 };
 
+        //this.player = player;
+        levelData = data.level_data;
+
         // Add this object to the gameLoop
         GameEnv.gameObjects.push(this);
 
         // Set the initial size and velocity of the object
         this.resize();
+
+        this.bindEventListeners();
 
     }
 
@@ -162,34 +179,65 @@ class Item extends GameObject {
     update() {
         // Update begins by drawing the object object
         this.draw();
+        
 
         this.collisionChecks();
+    }
 
-        // Update or change position according to velocity events
-        this.position.x += this.velocity.x;
-        this.position.y += this.velocity.y;
+    bindEventListeners() {
+        addEventListener('keydown', this.handleKeyDown.bind(this));
+        addEventListener('keyup', this.handleKeyUp.bind(this));
+    }
+    /**
+     * Handle keydown events for interaction.
+     * @param {Object} event - The keydown event.
+     */
+    handleKeyDown({ key }) {
 
-        // Ensure the object stays within the canvas boundaries
-        // Bottom of the canvas
-        if (this.position.y + this.height > GameEnv.innerHeight) {
-            this.position.y = GameEnv.innerHeight - this.height;
-            this.velocity.y = 0;
+        switch (key) {
+            case 'e':  
+                //console.log(this.hasCollided("Hi I am Chill Guy, the desert wanderer. I am looking for wisdome and adventure!"));
+                
+                if(this.hasCollided("Hi I am Chill Guy, the desert wanderer. I am looking for wisdome and adventure!")){
+                    levelData.setPlayerItem();
+                    this.destroy();
+                }
+                break;
+            case 'u':  
+                //player.getPlayerItem();
+                break;
         }
-        // Top of the canvas
-        if (this.position.y < 0) {
-            this.position.y = 0;
-            this.velocity.y = 0;
+    }
+
+    /**
+     * Handle keyup events to stop player actions.
+     * @param {Object} event - The keyup event.
+     */
+    handleKeyUp({ key }) {
+        if (key === 'e' || key === 'u') {
+            // Clear any active timeouts when the interaction key is released
+            if (this.alertTimeout) {
+                clearTimeout(this.alertTimeout);
+                this.alertTimeout = null;
+            }
         }
-        // Right of the canvas
-        if (this.position.x + this.width > GameEnv.innerWidth) {
-            this.position.x = GameEnv.innerWidth - this.width;
-            this.velocity.x = 0;
+    }
+
+    /**
+     * Update the collisions array when player is touching the object
+     * @param {*} objectID 
+     */
+    
+    handleCollisionEvent() {
+        const objectID = this.collisionData.touchPoints.other.id;
+        const objectGreet = this.collisionData.touchPoints.other.greet;
+        // check if the collision type is not already in the collisions array
+        if (!this.state.collisionEvents.includes(objectID)) {
+            // add the collisionType to the collisions array, making it the current collision
+            this.state.collisionEvents.push(objectID);
+            //alert(objectGreet);
         }
-        // Left of the canvas
-        if (this.position.x < 0) {
-            this.position.x = 0;
-            this.velocity.x = 0;
-        }
+        this.handleReaction();
     }
 
     /**

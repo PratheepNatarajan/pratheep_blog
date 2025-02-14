@@ -2,29 +2,7 @@ import GameEnv from "./GameEnv.js";
 import Character from "./Character.js";
 import Prompt from "./Prompt.js";
 
-    class Quest {
-        constructor(title, description, itemsRequired) {
-            this.title = title;
-            this.description = description;
-            this.itemsRequired = itemsRequired; // An array of items the player needs to collect
-            this.itemsCollected = 0; // Track how many items the player has collected
-        }
-
-        updateProgress() {
-            return `Progress: ${this.itemsCollected} / ${this.itemsRequired.length}`;
-        }
-
-        collectItem() {
-            if (this.itemsCollected < this.itemsRequired.length) {
-                this.itemsCollected++;
-            }
-        }
-
-        isComplete() {
-            return this.itemsCollected === this.itemsRequired.length;
-        }
-    }
-
+let levelData;
 class Npc extends Character {
     constructor(data = null) {
         super(data);
@@ -32,7 +10,9 @@ class Npc extends Character {
         this.questions = Prompt.shuffleArray(data?.quiz?.questions || []); // Shuffle questions
         this.currentQuestionIndex = 0; // Start from the first question
         this.alertTimeout = null;
-        this.bindEventListeners();
+        this.bindInteractKeyListeners();
+
+        levelData = data.level_data;
     }
     /**
      * Override the update method to draw the NPC.
@@ -44,7 +24,7 @@ class Npc extends Character {
     /**
      * Bind key event listeners for proximity interaction.
      */
-    bindEventListeners() {
+    bindInteractKeyListeners() {
         addEventListener('keydown', this.handleKeyDown.bind(this));
         addEventListener('keyup', this.handleKeyUp.bind(this));
     }
@@ -56,7 +36,7 @@ class Npc extends Character {
         switch (key) {
             case 'e': // Player 1 interaction
             case 'u': // Player 2 interaction
-                this.shareQuizQuestion();
+                this.handleKeyInteract();
                 break;
         }
     }
@@ -73,19 +53,11 @@ class Npc extends Character {
             }
         }
     }
+ 
     /**
-     * Get the next question in the shuffled array.
-     * @returns {string} - The next quiz question.
+     * Handle proximity interaction and share a quiz.
      */
-    getNextQuestion() {
-        const question = this.questions[this.currentQuestionIndex];
-        this.currentQuestionIndex = (this.currentQuestionIndex + 1) % this.questions.length; // Cycle through questions
-        return question;
-    }
-    /**
-     * Handle proximity interaction and share a quiz question.
-     */
-    shareQuizQuestion() {
+    handleKeyInteract() {
         const players = GameEnv.gameObjects.filter(obj => obj.state.collisionEvents.includes(this.spriteData.id));
         const hasQuestions = this.questions.length > 0;
         if (players.length > 0 && hasQuestions) {
@@ -99,5 +71,6 @@ class Npc extends Character {
             });
         }
     }
+
 }
 export default Npc;

@@ -35,7 +35,31 @@ permalink: /gamify/adventureGame
     color: #4682b4;
 }
 
-/* New button style for NPC Tracker */
+/* Quest Progress Bar */
+#questProgressContainer {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    background-color: #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#questProgressBar {
+    height: 20px;
+    width: 0%;
+    background-color: #4caf50;
+    text-align: center;
+    line-height: 20px;
+    color: white;
+    font-weight: bold;
+    transition: width 0.5s ease-in-out;
+}
+
+/* NPC Tracker Button style */
 #npcTrackerButton {
     position: relative;
     display: block;
@@ -55,29 +79,12 @@ permalink: /gamify/adventureGame
 #npcTrackerButton:hover {
     background-color: #5a9bd3;
 }
-
-/* NPC Tracker Pop-up */
-#npcTrackerPopup {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 40%;
-    height: auto;
-    min-height: 20%;
-    background-color: white;
-    border: 2px solid #4682b4;
-    border-radius: 12px;
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    text-align: center;
-    font-size: 20px;
-    font-weight: bold;
-    color: black;
-    z-index: 1001;
-}
 </style>
+
+<!-- Quest Progress UI -->
+<div id="questProgressContainer">
+    <div id="questProgressBar">0%</div>
+</div>
 
 <!-- Score & Stats -->
 <div id="score" style="position: absolute; top: 75px; left: 10px; color: black; font-size: 20px; background-color: white;">
@@ -96,12 +103,6 @@ permalink: /gamify/adventureGame
 <div id="gameContainer">
     <div id="promptDropDown" class="promptDropDown" style="z-index: 9999"></div>
     <canvas id='gameCanvas'></canvas>
-</div>
-
-<!-- NPC Tracker Pop-up -->
-<div id="npcTrackerPopup">
-    <h2>NPCs Met:</h2>
-    <ul id="npcTrackerList"></ul>
 </div>
 
 <script type="module">
@@ -124,58 +125,44 @@ permalink: /gamify/adventureGame
 </script>
 
 <script>
-    let npcTracker = []; // Stores NPC names in order
-
-    // Function to update NPC tracker UI
-    function updateNpcTracker() {
-        const list = document.getElementById("npcTrackerList");
-        list.innerHTML = ""; // Clear old data
-        npcTracker.forEach(npc => {
-            const li = document.createElement("li");
-            li.textContent = npc;
-            list.appendChild(li);
-        });
+    function updateQuestProgress(current, total) {
+        const progressBar = document.getElementById("questProgressBar");
+        let progressPercent = (current / total) * 100;
+        progressBar.style.width = progressPercent + "%";
+        progressBar.textContent = `${current} / ${total}`;
     }
 
-    // Function to toggle the NPC Tracker pop-up
-    function toggleNpcTracker() {
-        const popup = document.getElementById("npcTrackerPopup");
-        if (popup.style.display === "none" || popup.style.display === "") {
-            updateNpcTracker();
-            popup.style.display = "block"; // Show the popup
-        } else {
-            popup.style.display = "none"; // Hide the popup
-        }
-    }
+    // Adjust the animation rate for the questgiver">
+    
 
-    // Wait until the DOM is fully loaded
     document.addEventListener("DOMContentLoaded", function() {
-        const npcTrackerButton = document.getElementById("npcTrackerButton");
-        if (npcTrackerButton) {
-            npcTrackerButton.addEventListener("click", toggleNpcTracker);
+        const questgiver = document.querySelector("npc2.png");
+        if (questgiver) {
+            questgiver.style.animationDuration = "100s"; // Adjusted animation rate
+             console.log(".npc2 element found.");
         }
-
-        // Detect when the player presses "E" to interact with NPCs
-        document.addEventListener("keydown", function(event) {
-            if (event.key === "e" || event.key === "E") {
-                trackNpcInteraction();
-            }
-        });
+        else
+        {
+             console.log(".npc2 element not found.");
+        }
     });
 
-    // Function to track NPC interactions
-    function trackNpcInteraction() {
-        // List of possible NPCs to track (in order)
-        const possibleNpcs = ["Tux", "Octocat", "Linux Robot"];
+    // Adjusting the NPC sprite's SCALE_FACTOR
+ /*   document.addEventListener("DOMContentLoaded", function() {
+        const npcElement = document.querySelector(".npc-sprite");
+        if (npcElement) {
+            const canvasWidth = window.innerWidth;
+            const canvasHeight = window.innerHeight;
+            const npcOriginalSize = 1024; // Original sprite size
 
-        // If the player hasn't interacted yet, add the next NPC in order
-        if (npcTracker.length < possibleNpcs.length) {
-            const nextNpc = possibleNpcs[npcTracker.length];
-            if (!npcTracker.includes(nextNpc)) {
-                npcTracker.push(nextNpc);
-            }
+            const scaleFactor = Math.min(
+                canvasWidth / (npcOriginalSize * 4), // Adjust proportionally
+                canvasHeight / (npcOriginalSize * 4)
+            );
+
+            npcElement.style.transform = `scale(${scaleFactor})`;
         }
-
-        updateNpcTracker();
-    }
+    });*/
 </script>
+
+
