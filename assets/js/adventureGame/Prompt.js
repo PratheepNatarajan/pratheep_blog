@@ -1,11 +1,18 @@
+import GameEnv from './GameEnv.js';
+import Player from './Player.js';
+
+let levelData;
+
 const Prompt = {
     isOpen: false,
     dim: false,
+    currentNpc: null,
 
     backgroundDim: {
         create () {
-            this.dim = true // sets the dim to be true when the prompt is opened
-            console.log("CREATE DIM")
+            if (!document.body) return;
+
+            this.dim = true;
             const dimDiv = document.createElement("div");
             dimDiv.id = "dim";
             dimDiv.style.backgroundColor = "black";
@@ -13,21 +20,48 @@ const Prompt = {
             dimDiv.style.height = "100%";
             dimDiv.style.position = "absolute";
             dimDiv.style.opacity = "0.8";
-            document.body.append(dimDiv);
-            dimDiv.style.zIndex = "9998"
-            dimDiv.addEventListener("click", Prompt.backgroundDim.remove)
+            dimDiv.style.zIndex = "9998";
+            document.body.appendChild(dimDiv);
+            dimDiv.addEventListener("click", Prompt.backgroundDim.remove);
+
+            // Stop all players' movement
+            GameEnv.gameObjects.forEach(obj => {
+                if (obj.canvas?.id === 'Player') {
+                    obj.velocity.x = 0;
+                    obj.velocity.y = 0;
+                    obj.isInteracting = true;
+                }
+            });
         },
+
         remove () {
-            this.dim = false
-            console.log("REMOVE DIM");
+            this.dim = false;
             const dimDiv = document.getElementById("dim");
-            dimDiv.remove();
-            Prompt.isOpen = false
-            promptTitle.style.display = "none";
-            promptDropDown.style.width = "0"; 
-            promptDropDown.style.top = "0";  
-            promptDropDown.style.left = "-100%"; 
-            promptDropDown.style.transition = "all 0.3s ease-in-out";
+            if (dimDiv) {
+                dimDiv.remove();
+            }
+            
+            // Reset player states
+            GameEnv.gameObjects.forEach(obj => {
+                if (obj.canvas?.id === 'Player') {
+                    obj.isInteracting = false;
+                    obj.velocity.x = 0;
+                    obj.velocity.y = 0;
+                }
+            });
+
+            Prompt.isOpen = false;
+            const promptTitle = document.getElementById("promptTitle");
+            const promptDropDown = document.querySelector('.promptDropDown');
+            if (promptTitle) {
+                promptTitle.style.display = "none";
+            }
+            if (promptDropDown) {
+                promptDropDown.style.width = "0"; 
+                promptDropDown.style.top = "0";  
+                promptDropDown.style.left = "-100%"; 
+                promptDropDown.style.transition = "all 0.3s ease-in-out";
+            }
         },
     },
 
@@ -110,6 +144,7 @@ const Prompt = {
             answer: input.value.trim()
         }));
         console.log("Submitted Answers:", answers);
+        levelData.setPrompt(answers);
         // Handle the submission logic (e.g., save answers, validate, etc.)
         alert("Your answers have been submitted!");
         Prompt.isOpen = false;
@@ -164,31 +199,34 @@ const Prompt = {
         
     },
 
-    openPromptPanel(npc) {
+    openPromptPanel(npc, data) {
+        if (!document.querySelector('.promptDropDown')) {
+            console.error('promptDropDown element not found');
+            return;
+        }
+
         const promptDropDown = document.querySelector('.promptDropDown');
         const promptTitle = document.getElementById("promptTitle");
     
         // Close any existing prompt before opening a new one
         if (this.isOpen) {
-            this.backgroundDim.remove(); // Ensures previous dim is removed
+            this.backgroundDim.remove();
         }
     
-        this.currentNpc = npc; // Assign the current NPC when opening the panel
+        this.currentNpc = npc;
         this.isOpen = true;
+        levelData = data;
     
-        // Ensure the previous content inside promptDropDown is removed
         promptDropDown.innerHTML = ""; 
         
-        promptTitle.style.display = "block";
-
-        // Add the new title
-        promptTitle.innerHTML = npc.quiz.title || "Questions";
-        promptDropDown.appendChild(promptTitle);
+        if (promptTitle) {
+            promptTitle.style.display = "block";
+            promptTitle.innerHTML = npc.quiz?.title || "Questions";
+            promptDropDown.appendChild(promptTitle);
+        }
     
-        // Display the new questions
         promptDropDown.appendChild(this.updatePromptTable());
     
-        // Handle the background dim effect
         this.backgroundDim.create();
     
         promptDropDown.style.position = "fixed";

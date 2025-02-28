@@ -50,31 +50,79 @@ class GameLevelPrison {
         level_data: levelData
     };
 
+
+    
     // NPC data  
     
-    
      // NPC data for Questgiver
-     const sprite_src_questgiver = path + "/images/gamify/questGiverNPC.png";
+     const sprite_src_questgiver = path + "/images/gamify/questNPC.png";
      const sprite_data_questgiver = {
        id: 'Questgiver',
-       greeting: "Please help me, I am stuck here and starving. There may be a key nearby...",
+       // Store the base greeting as a regular property
+       greeting: "Find me two spoons and I'll give you this key.",
+       // Use a method instead of a getter
+       getGreeting() {
+           const itemsCollected = levelData.getPlayerItem();
+           if (itemsCollected >= 2) {
+               return "Thank you for finding both items! You can have this key";
+           }
+           return this.baseGreeting;
+       },
        src: sprite_src_questgiver,
-       SCALE_FACTOR: 10,
+       SCALE_FACTOR: 9,
        STEP_FACTOR: 1000,
        ANIMATION_RATE: 50,
-       pixels: { height: 128, width: 128 },
+       pixels: { height: 64, width: 64 },
        INIT_POSITION: { x: (width/3 ), y: (height/3 ) },
        orientation: { rows: 1, columns: 1 },
        down: { row: 0, start: 0, columns: 1 },
        hitbox: { widthPercentage: 0.1, heightPercentage: 0.2 },
-       quest: {
-         title: "New Adventure",
-         description: "A tickler is near, please help!",
-         reward: "30 gold"
-       },
+       quest: "2 spoon = 1 key",
        level_data: levelData
      };
       
+
+    
+    // NPC data for quiz npc 
+    const sprite_src_quiz = path + "/images/gamify/quizNPC.png"; // be sure to include the path
+    const sprite_data_quiz = {
+        id: 'Quiz Giver',
+        greeting: "Answer my question correctly, and I'll give you a key",
+        src: sprite_src_quiz,
+        SCALE_FACTOR: 9,  // Adjust this based on your scaling needs
+        ANIMATION_RATE: 50,
+        pixels: {height: 64, width: 64},
+        INIT_POSITION: { x: (width / 2), y: (height / 2)},
+        orientation: { rows: 1, columns: 1 },
+       down: { row: 0, start: 0, columns: 1 },
+        hitbox: { widthPercentage: 0.1, heightPercentage: 0.2 },
+        // Linux command quiz
+        quiz: { 
+          title: "Quiz",
+          questions: [
+            "How many barrels are located in the prison?"
+          ] 
+        },
+        level_data: levelData,
+      };
+
+    // NPC data for Knight
+    const sprite_src_knight = path + "/images/gamify/knight.png"; // be sure to include the path
+    const sprite_data_knight = {
+        id: 'Knight',
+        greeting: "I am the guardian of this prison. Prove your worth to pass.",
+        src: sprite_src_knight,
+        SCALE_FACTOR: 10,
+        STEP_FACTOR: 1000,
+        ANIMATION_RATE: 50,
+        pixels: { height: 64, width: 64 },
+        INIT_POSITION: { x: (width / 1.6), y: (height / 4) - 200 }, // Shifted right by increasing x value
+        orientation: { rows: 1, columns: 1 },
+        down: { row: 0, start: 0, columns: 1 },
+        hitbox: { widthPercentage: 0.1, heightPercentage: 0.2 },
+        level_data: levelData
+    };
+
     // data for item
     const spriteItem1 = path + "/images/gamify/spoon.png"; // be sure to include the path
     const scaleItem1 = 20;
@@ -85,7 +133,7 @@ class GameLevelPrison {
         SCALE_FACTOR: scaleItem1,
         STEP_FACTOR: 1000,
         ANIMATION_RATE: 50,
-        INIT_POSITION: { x: 200, y: height - (height/scaleItem1) - 100}, 
+        INIT_POSITION: { x: 600, y: height - (height/scaleItem1) - 500}, 
         pixels: {height: 32, width: 32},
         orientation: {rows: 1, columns: 1 },
         down: {row: 0, start: 0, columns: 1 },
@@ -108,7 +156,7 @@ class GameLevelPrison {
         SCALE_FACTOR: scaleItem2,
         STEP_FACTOR: 1000,
         ANIMATION_RATE: 50,
-        INIT_POSITION: { x: 400, y: height - (height/scaleItem2) - 300}, 
+        INIT_POSITION: { x: 800, y: height - (height/scaleItem2) - 200}, 
         pixels: {height: 32, width: 32},
         orientation: {rows: 1, columns: 1 },
         down: {row: 0, start: 0, columns: 1 },
@@ -126,7 +174,9 @@ class GameLevelPrison {
       { class: Player, data: sprite_data_player },  
       { class: Item, data: spriteDataItem1 },
       { class: Item, data: spriteDataItem2},
-      { class: Npc, data: sprite_data_questgiver }
+      { class: Npc, data: sprite_data_questgiver },
+      { class: Npc, data: sprite_data_quiz },
+      { class: Npc, data: sprite_data_knight } // Added knight NPC
     ];
   }
 
