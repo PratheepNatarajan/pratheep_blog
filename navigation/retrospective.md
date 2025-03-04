@@ -18,7 +18,7 @@ permalink: /retrospective/
 - I edited the message of the npc based on how many items you have left
 - I randomized the spoon location every time you load into a new game
 - I made it such that the knight collects the keys and transports you to the next level
-- 0.93/1 because I learned about classes of npcs and items and changing their properties with a clear path on what to tinker next
+- 0.98/1 because I learned about classes of npcs and items and changing their properties with a clear path on what to tinker next
   
 ## RPG Game Tinkers Writeup
 
@@ -26,7 +26,7 @@ permalink: /retrospective/
 
 [RPG Tinkers and Explanations](https://pratheepnatarajan.github.io/pratheep_blog/csse/tinkers)
 
-0.9/1 because I learned how to modify properties of Npcs and Items.
+0.91/1 because I learned how to modify properties of Npcs and Items.
 
 ## N@TM Feedback for adventureGame
 
@@ -60,4 +60,4 @@ permalink: /retrospective/
   
 ### Total
 
-- 4.63/5
+- 4.7/5
