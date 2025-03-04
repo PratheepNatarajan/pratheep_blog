@@ -18,7 +18,7 @@ permalink: /retrospective/
 - I edited the message of the npc based on how many items you have left
 - I randomized the spoon location every time you load into a new game
 - I made it such that the knight collects the keys and transports you to the next level
-- 0.91/1 because I learned about classes of npcs and items and changing their properties although I think I could have done more effective tinkers to really change and modify the game.
+- 0.93/1 because I learned about classes of npcs and items and changing their properties with a clear path on what to tinker next
   
 ## RPG Game Tinkers Writeup
 
@@ -56,8 +56,8 @@ permalink: /retrospective/
 - Add more features to adventureGame using N@TM feedback
 - Understand the game at a deeper level to make significant changes to the project
 
-- Overall, I believe my grade would be 0.93/1 because I talked about improving adventureGame using N@TM feedback while providing a clear path to follow in CompSci
+- Overall, I believe my grade would be 0.95/1 because I talked about improving adventureGame using N@TM feedback while providing a clear path to follow in CompSci
   
 ### Total
 
-- 4.57/5
+- 4.63/5
