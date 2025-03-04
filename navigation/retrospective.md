@@ -38,7 +38,7 @@ permalink: /retrospective/
 
 - I thought that it was cool that ruhaan added an interactive object in his adventureGame explaining how to progress in the game, and it sparked an idea for me to create a prompt at the beginning of the game to explain how the game works so that the player does not get confused when playing
   
-![Ruhaan PRoject](../images/about/ruhaangame.jpg)
+![Ruhaan Project](../images/about/ruhaangame.jpg)
 ### CompSci future goals
 
 - Learning Game Coding/javascript to develop games in the future
