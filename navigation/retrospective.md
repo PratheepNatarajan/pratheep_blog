@@ -24,7 +24,7 @@ permalink: /retrospective/
 
 ![RPG Plan](../images/about/rpgplan.png)
 
-
+[RPG Tinkers and Explanations](https://pratheepnatarajan.github.io/pratheep_blog/csse/tinkers)
 
 0.9/1 because I learned how to modify properties of Npcs and Items.
 
