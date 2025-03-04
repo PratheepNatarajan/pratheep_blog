@@ -18,7 +18,7 @@ permalink: /retrospective/
 - I edited the message of the npc based on how many items you have left
 - I randomized the spoon location every time you load into a new game
 - I made it such that the knight collects the keys and transports you to the next level
-- 0.88/1 because I learned about classes of npcs and items and changing their properties although I think I could have done more effective tinkers to really change and modify the game.
+- 0.91/1 because I learned about classes of npcs and items and changing their properties although I think I could have done more effective tinkers to really change and modify the game.
   
 ## RPG Game Tinkers Writeup
 
