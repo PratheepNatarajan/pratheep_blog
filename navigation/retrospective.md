@@ -55,8 +55,9 @@ permalink: /retrospective/
 
 - Add more features to adventureGame using N@TM feedback
 - Understand the game at a deeper level to make significant changes to the project
-- 0.93/1 because I talked about improving adventureGame using N@TM feedback while providing a clear path to follow in CompSci
+
+- Overall, I believe my grade would be 0.93/1 because I talked about improving adventureGame using N@TM feedback while providing a clear path to follow in CompSci
   
 ### Total
 
-- 4.54/5
+- 4.57/5
