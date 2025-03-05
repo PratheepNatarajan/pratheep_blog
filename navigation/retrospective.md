@@ -6,7 +6,7 @@ permalink: /retrospective/
 
 ## Topics I have learned through CSSE
 
-- I learned how to somewhat teach through Javascript lessons
+- I learned how to teach through Javascript lessons
 - I learned the various tools such as WSL, Github, and navigating VSCode
 - I learned how to tinker with different NPC properties in RPG
 - I learned various linux commands such as cd, mkdir, and ls
