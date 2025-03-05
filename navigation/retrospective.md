@@ -11,14 +11,14 @@ permalink: /retrospective/
 - I learned how to tinker with different NPC properties in RPG
 - I learned various linux commands such as cd, mkdir, and ls
 - I learned how to work on a project with peers on the same repository
-- 0.95/1 because I can effectively navigate through tools such as Github and VScode, and learned the basics of most javascript topics which greatly helped me tinker adventureGame
+- 0.93/1 because I can effectively navigate through tools such as Github and VScode, and learned the basics of most javascript topics which greatly helped me tinker adventureGame
   
 ## RPG Game Tinkers
 
 - I edited the message of the npc based on how many items you have left
 - I randomized the spoon location every time you load into a new game
 - I made it such that the knight collects the keys and transports you to the next level
-- 0.98/1 because I learned about classes of npcs and items and changing their properties with a clear path on what to tinker next
+- 0.95/1 because I learned about classes of npcs and items and changing their properties with a clear path on what to tinker next
   
 ## RPG Game Tinkers Writeup
 
@@ -60,4 +60,4 @@ permalink: /retrospective/
   
 ### Total
 
-- 4.7/5
+- 4.65/5
